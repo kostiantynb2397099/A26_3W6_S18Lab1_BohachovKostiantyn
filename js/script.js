@@ -8,8 +8,27 @@ function genererContenu() {
   for(let i = 0; i < nombreSections; i++){
     let h = document.createElement("h2");
     contenuARemplacer.appendChild(h);
+    h.setAttribute("monId", "Id" + i);
     let titre = document.getElementById("titre").value;
     h.textContent = titre + " " + i;
+
+    h.addEventListener('mousedown', (event) => {
+    console.log(event);
+    console.log(event.target);
+    console.log(h.getAttribute("monId"));
+    });
+
+    let aside = document.createElement("aside");
+    contenuARemplacer.appendChild(aside);
+    aside.textContent = "Plus de détails à propos de: " + i;
+
+    h.addEventListener('mouseenter', (event) => {
+    aside.className = "show";
+    });
+
+    h.addEventListener('mouseleave', (event) => {
+    aside.className = "";
+    });
 
     let p = document.createElement("p");
     contenuARemplacer.appendChild(p);
